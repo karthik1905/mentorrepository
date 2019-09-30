@@ -11,8 +11,10 @@
 <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/project</property>
 <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 <mapping class="com.mentor.demand.UserDtls"/>
+<mapping class="com.mentor.demand.MentorDtls"/>
+<mapping class="com.mentor.demand.MentorCalendar"/>
 <mapping class="com.mentor.demand.PaymentDtls"/>
-<mapping class="com.mentor.demand.SkillDtls"/>
+<mapping class="com.mentor.demand.TechnologyDtls"/>
 <mapping class="com.mentor.demand.TrainingDtls"/>
 </session-factory>
 </hibernate-configuration>

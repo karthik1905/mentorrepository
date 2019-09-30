@@ -1,15 +1,25 @@
 package com.mentor.demand;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "skill")
-public class SkillDtls {
+@Table(name = "technology")
+public class TechnologyDtls {
+	private static final long serialversionUID = 1L;
+	public static long getSerialversionuid() {
+		return serialversionUID;
+	}
+
 	@Id
 	@Column(name = "id_no")
 	private Long skillid;
@@ -25,17 +35,17 @@ public class SkillDtls {
 	private String name = "";
 	private String toc = "";
 	private String prerequisites = "";
-	@OneToOne
-	private PaymentDtls paymentobj;
 
-	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="Mentor_ID")
+    private Collection<MentorDtls> mentorDtlsObj=new ArrayList<MentorDtls>();
 
-	public PaymentDtls getPaymentobj() {
-		return paymentobj;
+	public Collection<MentorDtls> getMentorDtlsObj() {
+		return mentorDtlsObj;
 	}
 
-	public void setPaymentobj(PaymentDtls paymentobj) {
-		this.paymentobj = paymentobj;
+	public void setMentorDtlsObj(Collection<MentorDtls> mentorMapObj) {
+		this.mentorDtlsObj = mentorMapObj;
 	}
 
 	public String getName() {
@@ -62,7 +72,7 @@ public class SkillDtls {
 		this.prerequisites = prerequisites;
 	}
 
-	public SkillDtls(Long skillid, String name, String toc, String prerequisites) {
+	public TechnologyDtls(Long skillid, String name, String toc, String prerequisites) {
 		super();
 		this.skillid = skillid;
 		this.name = name;
@@ -70,7 +80,7 @@ public class SkillDtls {
 		this.prerequisites = prerequisites;
 	}
 
-	public SkillDtls() {
+	public TechnologyDtls() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
