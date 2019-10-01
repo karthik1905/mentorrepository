@@ -4,8 +4,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,18 +20,17 @@ public class UserDtls {
 	private Long ContactNumber;
 	private Boolean confirmedSignUp = false;
 	private Boolean resetPassword = false;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<TrainingDtls> trainingObj;
+	
+	public Set<TrainingDtls> getTrainingObj() {
+		return trainingObj;
+	}
 
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "user_id")
-//	private Set<TechnologyDtls> technologymap;
-//
-//	public Set<TechnologyDtls> getTechnologymap() {
-//		return technologymap;
-//	}
-//
-//	public void setTechnologymap(Set<TechnologyDtls> technologymap) {
-//		this.technologymap = technologymap;
-//	}
+	public void setTrainingObj(Set<TrainingDtls> trainingObj) {
+		this.trainingObj = trainingObj;
+	}
 
 	public UserDtls(Long id, String userName, String password, String firstName, String lastName, Long contactNumber,
 			Boolean confirmedSignUp, Boolean resetPassword) {

@@ -1,9 +1,12 @@
 package com.mentor.demand;
 
-import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,18 @@ public class MentorCalendar {
 		this.calendarId = calendarId;
 		this.fromDate = fromDate;
 		this.toDate = toDate;
+	}
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="calendar_id")
+	private Set<MentorDtls> MentorCalObj;
+
+	public Set<MentorDtls> getMentorCalObj() {
+		return MentorCalObj;
+	}
+
+	public void setMentorCalObj(Set<MentorDtls> mentorCalObj) {
+		MentorCalObj = mentorCalObj;
 	}
 
 	public Long getCalendarId() {

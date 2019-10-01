@@ -1,7 +1,5 @@
 package com.mentor.demand;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -38,14 +36,14 @@ public class TechnologyDtls {
 
 	@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="Mentor_ID")
-    private Collection<MentorDtls> mentorDtlsObj=new ArrayList<MentorDtls>();
+    private Set<MentorDtls> mentorDtlsObj;
 
-	public Collection<MentorDtls> getMentorDtlsObj() {
+	public Set<MentorDtls> getMentorDtlsObj() {
 		return mentorDtlsObj;
 	}
 
-	public void setMentorDtlsObj(Collection<MentorDtls> mentorMapObj) {
-		this.mentorDtlsObj = mentorMapObj;
+	public void setMentorDtlsObj(Set<MentorDtls> mentorDtlsObj) {
+		this.mentorDtlsObj = mentorDtlsObj;
 	}
 
 	public String getName() {

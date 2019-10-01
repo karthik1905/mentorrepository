@@ -2,11 +2,9 @@ package com.mentor.demand;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,11 +21,16 @@ public class TrainingDtls {
 	private Float fees;
 	@OneToOne
 	private PaymentDtls paymentobj;
-	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "user_id")
-//	private Set<TechnologyDtls> skillmap;
-	
+	@ManyToMany(mappedBy = "trainingObj")
+	private Set<UserDtls> userObj;
+
+	public Set<UserDtls> getUserObj() {
+		return userObj;
+	}
+
+	public void setUserObj(Set<UserDtls> userObj) {
+		this.userObj = userObj;
+	}
 
 	public PaymentDtls getPaymentobj() {
 		return paymentobj;
